@@ -1,0 +1,65 @@
+@import url('https://fonts.google.com/specimen/Courgette?query=get+');
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  padding: 20px;
+  border-radius: 30px 30px 0 0 ;
+  border: 1px solid black;
+  box-shadow: 0 2px 4px #8a6b31;
+  margin-top: 100px;
+  margin-left: 25px;
+  margin-bottom: 16px;
+  position: relative;
+  background-image: url('https://cdn.pixabay.com/photo/2017/03/27/14/31/stars-2179083_640.jpg');
+  color: #070606;
+
+}
+
+.card__title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center;
+  font-family: Courgette, sans-serif;
+  
+}
+
+.card__image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  border: 3px solid #616161;
+}
+
+.card__text {
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  margin-bottom: 8px;
+  font-family: Courgette, sans-serif;
+  
+}
+
+.card:hover .hiddenText {
+    display: block;
+  }
+
+  .hiddenText {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+

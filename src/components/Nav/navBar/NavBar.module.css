@@ -1,0 +1,38 @@
+.navBarContainer {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    
+  }
+
+  .navBarList {
+    margin: 0 10px;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    
+  }
+  .navBarContainerLink{
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #ccc;
+    color: #333;
+    text-decoration: none;
+    border-right: 1px solid white;
+    margin-right: 15px;
+   
+  }
+  
+  .navBarContainer li a:hover {
+    background-color: #333;
+    color: #fff;
+  }
+
+  
+
