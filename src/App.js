@@ -8,7 +8,7 @@ import About from './components/Router/about/About';
 import Detail from './components/Router/detail/Detail';
 import Favorite from "./components/Router/favorite/Favorite";
 import History  from "./components/Router/history/History.jsx";
-
+import Errors from "./components/Router/Errors/Errors.jsx"
 
 
 function App () {
@@ -55,12 +55,14 @@ function App () {
           alert("El usuario o la contraseña no son correctos.")
         }
     }
-   
-
+    
+  
     useEffect(() => {
-      !access && navigate("/")
+      if (!access && location.pathname !== '/error') {
+        navigate('/')
+      }
+    }, [access, navigate, location.pathname])
 
-    }, [access, navigate])
 
   return (
     <div className='App' >
@@ -85,7 +87,11 @@ function App () {
 
       <Route  path="/favorite" element = {<Favorite/>}/>
 
+      
+
       <Route path="detail/:detailId" element={<Detail />}/>
+
+      <Route path='*' element={<Errors />} />
 
     </Routes>
         
