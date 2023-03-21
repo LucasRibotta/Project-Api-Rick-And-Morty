@@ -14,11 +14,13 @@
   0 7px 8px #c7ca03,
   0 9px 10px #c7ca03;
   margin-top: 150px;
-  margin-left: 25px;
+  margin-left: 30px;
+  margin-right: 10px;
   margin-bottom: 16px;
   position: relative;
   background-image: url('https://w0.peakpx.com/wallpaper/622/373/HD-wallpaper-black-space-black-star-stars.jpg');
   color: #070606;
+  z-index: 50;
 
 }
 

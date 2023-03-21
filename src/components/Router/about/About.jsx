@@ -1,5 +1,6 @@
-import React from 'react'
-import s from "./About.module.css"
+import React from 'react';
+import s from "./About.module.css";
+
 
 export default function About(props) {
   return (
@@ -8,10 +9,7 @@ export default function About(props) {
       <h1>Hola, mi nombre es Lucas Ribotta</h1>
       
     <div>
-      <img  
-      src="/Imagen/c9f05e8bacb7074225a63b7e2f1f287d.jpg" 
-      className={s.miimagen}
-      alt="Yo" />
+      <img className={s.miimagen} src='miperfil.jpg' alt='yo' />
     </div>  
 
       <h2>Bienvenidos a mi Aplicación de Rick and Morty</h2>

@@ -78,6 +78,7 @@ function App () {
 
   return (
     <div className='App' >
+      
 
         {location.pathname !== "/" && 
         <Nav access={access} onSearch={onSearch} logout={logout}/>}

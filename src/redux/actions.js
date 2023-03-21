@@ -1,15 +1,15 @@
-import {ADD_FAV, REMOVE_FAV} from "./actions-types"
+import {ADD_FAVORITE, DELETE_FAVORITE} from "./actions-types"
 
 export function addFavorites(character) {
     return{
-        type: ADD_FAV,  //define la accion que le paso
+        type: ADD_FAVORITE,  //define la accion que le paso
         payload: character //define el contenido de dicha accion
     }
 }
 
-export function removeFavorites(id) {
+export function deleteFavorites(id) {
     return{
-        type:REMOVE_FAV,
+        type:DELETE_FAVORITE,
         payload: id
     }
 }

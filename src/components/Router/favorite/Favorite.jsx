@@ -1,19 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import style from './Favorite.module.css'
 
 function Favorite({myFavorites}) {
   return (
-    <div>
-     <h2>My Favorites</h2>
+    <div className={style.contenedor}>
+    
      {
       myFavorites?.map((character) =>(
-        <div>
+        <div className={style.card}>
+          <img src={character.image} className={style.image} alt={character.name} />
           <h2>{character.name}</h2>
-          <img src={character.image} alt={character.name} />
+          <h2>{character.species}</h2>
+          <h2>{character.gender}</h2>
+          
         </div>
+      
       ))
      }
+    
       
     </div>
   )

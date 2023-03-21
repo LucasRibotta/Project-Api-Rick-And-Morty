@@ -45,8 +45,8 @@ export default function Nav(props) {
  
         </ul>
 
-        <div className={style.logoutButton} >
-          {props.access && <button className={style.boton} onClick={props.logout}>Logout</button>}
+        <div className={style.logoutContainer} >
+          {props.access && <button className={style.logoutButton} onClick={props.logout}>Logout</button>}
           </div>
 
         </div>
