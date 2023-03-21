@@ -17,6 +17,7 @@ function App () {
   const location = useLocation()
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
+  
 
   const userName = "lucas@henry.com";
   const password = "lucas123" ;
@@ -56,23 +57,35 @@ function App () {
         }
     }
     
-  
-    useEffect(() => {
+    function logout() {
+      setAccess(false);
+      navigate("/");
+    }
+
+
+   /*  useEffect(() => {
       if (!access && location.pathname !== '/error') {
         navigate('/')
       }
-    }, [access, navigate, location.pathname])
+    }, [access, navigate, location.pathname]) */
+
+    useEffect(() => {
+      if (!access && location.pathname !== '/error') {
+        navigate('/');
+      }
+    }, [access, navigate, location.pathname]);
 
 
   return (
     <div className='App' >
 
         {location.pathname !== "/" && 
-        <Nav onSearch={onSearch}/>}
+        <Nav access={access} onSearch={onSearch} logout={logout}/>}
        
 
     <Routes>
 
+    <Route path="/logout" element={<Forms login={login} />} />
     <Route path="/" element={<Forms login = {login}/>}/>
 
       <Route path="/home" 

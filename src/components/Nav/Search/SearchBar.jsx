@@ -22,11 +22,15 @@ export default function SearchBar(props) {
 
    return (
 
-      <div className = {style.searchContainer}>
+      <div className={style.inputContainer}>
       <form  onSubmit = {handleSubmit}>
-      <input type="search" placeholder='Search' value={character} onChange = {handleInputChange} />
+
+      <div className={style.buttonContainer}>
+      <input className={style.search} type="search" placeholder='Search' value={character} onChange = {handleInputChange} />
       <button className={style.boton} type='submit'>ADD</button>
+   
       <button className={style.boton} type='button' onClick={handleRandomClick}>Random</button>
+    </div>
       </form>
     </div>
    );

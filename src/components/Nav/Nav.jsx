@@ -10,12 +10,8 @@ const NavLi = ({to, children, ...props}) => {
       to = {to}
       className={({isActive}) => isActive ? style.active : style.disable}
     >
-        {children}
-
-      
+        {children}   
     </NavLink>
-
-  
 
   )
 }
@@ -46,8 +42,13 @@ export default function Nav(props) {
           <li className={style.lista} >
             <NavLi to="/history">History</NavLi>
           </li>
-
+ 
         </ul>
+
+        <div className={style.logoutButton} >
+          {props.access && <button className={style.boton} onClick={props.logout}>Logout</button>}
+          </div>
+
         </div>
           <SearchBar className={style.boton} onSearch ={onSearch}/>
       </div>
