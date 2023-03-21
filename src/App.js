@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css';
 import Nav from './components/Nav/Nav';
 import Cards from './components/Tarjetas/Cards.jsx';
+import {Routes, Route, useLocation, useNavigate} from "react-router-dom";
+import Forms from './components/Formulario/Forms';
+import About from './components/Router/about/About';
+import Detail from './components/Router/detail/Detail';
+import Favorite from "./components/Router/favorite/Favorite";
+import History  from "./components/Router/history/History.jsx";
+
+
 
 function App () {
 
+  const navigate = useNavigate()
+  const location = useLocation()
   const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
+
+  const userName = "lucas@henry.com";
+  const password = "lucas123" ;
 
   function onSearch(id) {
-    console.log("ID:", id);
+   // console.log("ID:", id);
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
        .then((response) => response.json())
        .then((data) => {
@@ -32,14 +46,50 @@ function App () {
       
     }
 
+    const login  = (userData) => {
+      if(userData.userName === userName && userData.password === password ) {
+        setAccess(true) 
+        navigate("/home")
+      }
+        else{
+          alert("El usuario o la contraseña no son correctos.")
+        }
+    }
+   
+
+    useEffect(() => {
+      !access && navigate("/")
+
+    }, [access, navigate])
+
   return (
     <div className='App' >
-        <Nav onSearch={onSearch}/>
-        <h2 className='h1'>Rick And Morty</h2>
-        <Cards 
-          characters={characters} 
-          onClose = {handleClose}
-        />
+
+        {location.pathname !== "/" && 
+        <Nav onSearch={onSearch}/>}
+       
+
+    <Routes>
+
+    <Route path="/" element={<Forms login = {login}/>}/>
+
+      <Route path="/home" 
+            element={<Cards 
+              characters={characters} 
+              onClose = {handleClose}
+            />}/>
+
+      <Route  path="/about" element = {<About/>}/>
+
+      <Route  path="/history" element = {<History/>}/>
+
+      <Route  path="/favorite" element = {<Favorite/>}/>
+
+      <Route path="detail/:detailId" element={<Detail />}/>
+
+    </Routes>
+        
+        
 
       </div>
   )

@@ -15,12 +15,18 @@ export default function SearchBar(props) {
       setCharacter("");
    }
 
+   const handleRandomClick = () => {
+      const randomNumber = Math.floor(Math.random() * 826) + 1;
+      props.onSearch(randomNumber);
+   }
+
    return (
 
       <div className = {style.searchContainer}>
       <form  onSubmit = {handleSubmit}>
       <input type="search" placeholder='Search' value={character} onChange = {handleInputChange} />
-      <button type='submit'>Add</button>
+      <button className={style.boton} type='submit'>ADD</button>
+      <button className={style.boton} type='button' onClick={handleRandomClick}>Random</button>
       </form>
     </div>
    );

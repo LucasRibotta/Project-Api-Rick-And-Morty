@@ -1,0 +1,30 @@
+.mainContainer {
+  background-image: url("https://wallup.net/wp-content/uploads/2018/09/26/241072-black-minimalistic-dark-pattern-wall-textures-silver.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100vh;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: rgb(228, 217, 155);
+  }
+
+.p{
+  text-align: center;
+  font-size: 18px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.miimagen{
+  margin-right: 10px;
+  width: 50%;
+  height: auto;
+
+}

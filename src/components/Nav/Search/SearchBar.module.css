@@ -1,6 +1,7 @@
 .searchContainer{
     display: flex;
     justify-content:flex-end;
+    margin-right: 10px;
    
 }
 
@@ -10,20 +11,23 @@
     border: none;
     border-radius: 20px;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+    0 3px 3px #bfbfbf,
+    0 5px 5px #bfbfbf;
+    
 }
 
-.searchContainer botton{
-    font-size: 16px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 50px;
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
+.boton{
+        font-size: 18px;
+        padding: 8px 14px;
+        margin-left: 10px;
+        border: 1px solid #c8c8c8;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 
+        0 3px 3px #bfbfbf,
+        0 5px 5px #bfbfbf;
+       
+    }
 
-.searchContainer button:hover{
-    background-color: #636363;
-}
+
