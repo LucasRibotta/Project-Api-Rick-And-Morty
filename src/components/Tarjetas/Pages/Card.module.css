@@ -1,13 +1,15 @@
-@import url('https://fonts.google.com/specimen/Courgette?query=get+');
+@import url('https://fonts.google.com/specimen/Montserrat?query=montse');
 
 .card{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 250px;
   padding: 20px;
-  border-radius: 30px 30px 0 0 ;
-  border: 1px solid #c7ca03;
+  padding-top: 30px;
+  border-radius: 25px 25px 0 0 ;
+  border: 3px solid #c7ca03;
   box-shadow: 
   0 3px 4px #c7ca03,
   0 5px 6px #c7ca03,
@@ -27,11 +29,11 @@
 .card__title {
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   text-align: center;
-  color: #ffffffaf;
-  font-family: Courgette, sans-serif;
-  -webkit-text-stroke: 1px #19fa00;
+  color: rgb(59, 58, 58);
+  font-family: Montserrat, Arial, Helvetica, sans-serif ;
+  -webkit-text-stroke: 1px  #19fa00;
   
 }
 
@@ -72,7 +74,7 @@
 
 .deleteButton{
   position: absolute;
-  top: 10px;
+  top: 13px;
   right: 10px;
   background-color: #f44336;
   color: white;
@@ -84,4 +86,17 @@
 
 .deleteButton:hover {
   transform: scale(1.1);
+}
+
+.favbutton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  padding: 5px ;
+  font-size: 24px;
+  color: red;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
 }

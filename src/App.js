@@ -18,7 +18,6 @@ function App () {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
   
-
   const userName = "lucas@henry.com";
   const password = "lucas123" ;
 
@@ -63,12 +62,6 @@ function App () {
     }
 
 
-   /*  useEffect(() => {
-      if (!access && location.pathname !== '/error') {
-        navigate('/')
-      }
-    }, [access, navigate, location.pathname]) */
-
     useEffect(() => {
       if (!access && location.pathname !== '/error') {
         navigate('/');
@@ -76,42 +69,31 @@ function App () {
     }, [access, navigate, location.pathname]);
 
 
+
   return (
     <div className='App' >
-      
-
+    
         {location.pathname !== "/" && 
         <Nav access={access} onSearch={onSearch} logout={logout}/>}
-       
-
+ 
     <Routes>
 
     <Route path="/logout" element={<Forms login={login} />} />
     <Route path="/" element={<Forms login = {login}/>}/>
-
       <Route path="/home" 
             element={<Cards 
               characters={characters} 
               onClose = {handleClose}
             />}/>
-
       <Route  path="/about" element = {<About/>}/>
-
       <Route  path="/history" element = {<History/>}/>
-
       <Route  path="/favorite" element = {<Favorite/>}/>
-
-      
-
+      <Route path='*' element={<Errors />} />       
       <Route path="detail/:detailId" element={<Detail />}/>
 
-      <Route path='*' element={<Errors />} />
-
     </Routes>
-        
-        
 
-      </div>
+   </div>
   )
 }
 

@@ -34,9 +34,9 @@ function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) 
             <button type="button" className={style.deleteButton} onClick={() => onClose(id)}>X</button>
             {
                isFav ? (
-                <button onClick={handleFavorite}>❤️</button>
+                <button className={style.favbutton} onClick={handleFavorite}>❤️</button>
                ) : (
-                 <button onClick={handleFavorite}>🤍</button>
+                 <button className={style.favbutton} onClick={handleFavorite}>🤍</button>
              )
          }
 
