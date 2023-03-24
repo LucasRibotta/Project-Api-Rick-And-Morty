@@ -18,7 +18,7 @@
 }
 
 .image{
-    background-image: url(/Imagen/login.jpg);
+    background-image: url(/Imagen/login.jpg); 
     height: 250px;
     width: 400px;
     border-radius: 20px;

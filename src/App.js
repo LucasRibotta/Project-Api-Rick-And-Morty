@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './App.css';
 import Nav from './components/Nav/Nav';
-import Cards from './components/Tarjetas/Cards.jsx';
+/* import Cards from './components/Tarjetas/Cards.jsx'; */
 import {Routes, Route, useLocation, useNavigate} from "react-router-dom";
 import Forms from './components/Formulario/Forms';
 import About from './components/Router/about/About';
 import Detail from './components/Router/detail/Detail';
 import Favorite from "./components/Router/favorite/Favorite";
 import History  from "./components/Router/history/History.jsx";
-import Errors from "./components/Router/Errors/Errors.jsx"
+import Errors from "./components/Router/Errors/Errors.jsx";
+import Home from './components/Router/Home/Home';
+
+
 
 
 function App () {
@@ -53,6 +56,7 @@ function App () {
       }
         else{
           alert("El usuario o la contraseña no son correctos.")
+      
         }
     }
     
@@ -62,37 +66,41 @@ function App () {
     }
 
 
+
     useEffect(() => {
       if (!access && location.pathname !== '/error') {
         navigate('/');
       }
-    }, [access, navigate, location.pathname]);
+    }, [access, navigate, location.pathname]); 
 
 
 
   return (
-    <div className='App' >
     
-        {location.pathname !== "/" && 
+    <div className='App' >
+     
+    {location.pathname !== "/" && 
         <Nav access={access} onSearch={onSearch} logout={logout}/>}
- 
+    
     <Routes>
 
     <Route path="/logout" element={<Forms login={login} />} />
     <Route path="/" element={<Forms login = {login}/>}/>
-      <Route path="/home" 
-            element={<Cards 
+      <Route  path="/home" 
+            element={<Home 
               characters={characters} 
               onClose = {handleClose}
-            />}/>
+              
+              />}/>
+              
       <Route  path="/about" element = {<About/>}/>
       <Route  path="/history" element = {<History/>}/>
       <Route  path="/favorite" element = {<Favorite/>}/>
-      <Route path='*' element={<Errors />} />       
+      <Route path="*" element={<Errors />} />       
       <Route path="detail/:detailId" element={<Detail />}/>
 
     </Routes>
-
+             
    </div>
   )
 }

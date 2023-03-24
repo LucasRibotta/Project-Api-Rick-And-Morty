@@ -5,6 +5,8 @@ import {addFavorites, deleteFavorites} from "../../../../src/redux/actions";
 import { connect } from 'react-redux';
 
 
+
+
 function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) {
    const {id, name, image} = character;
 
@@ -29,8 +31,9 @@ function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) 
    }, [myFavorites]);
 
        return (
+       
          <div className={style.card} >
-
+     
             <button type="button" className={style.deleteButton} onClick={() => onClose(id)}>X</button>
             {
                isFav ? (
@@ -52,6 +55,7 @@ function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) 
             </div>
 
          </div>
+         
       );
    }
 
