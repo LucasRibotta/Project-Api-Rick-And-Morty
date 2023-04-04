@@ -1,0 +1,106 @@
+@import url('https://fonts.google.com/specimen/Montserrat?query=montse');
+
+.card{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  padding: 20px;
+  padding-top: 30px;
+  border-radius: 25px 25px 0 0 ;
+  border: 3px solid #19fa00;
+  box-shadow: 
+  0 3px 4px #19fa00,
+  0 5px 6px #19fa00,
+  0 7px 8px #19fa00,
+  0 9px 10px #19fa00c6,
+  0 10px 12px #19fa00c6;
+  margin-top: 150px;
+  margin-left: 30px;
+  margin-right: 10px;
+  margin-bottom: 16px;
+  position: relative;
+  background-image: url('https://i.pinimg.com/originals/b6/10/e1/b610e13f094b1ccb38c5f1ec78b644b1.gif'); 
+  
+  color: #070606;
+  z-index: 50;
+
+}
+
+.card__title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 7px;
+  text-align: center;
+  color: rgb(59, 58, 58);
+  font-family: Montserrat, Arial, Helvetica, sans-serif ;
+  -webkit-text-stroke: 1px  #19fa00;
+  
+}
+
+.card__image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  border-radius: 50%;
+  border: 3px solid #19fa00;
+  
+}
+
+.card_textContainer{
+  background-color: white;
+}
+
+.card:hover .hiddenText {
+    display: block;
+  }
+
+  .hiddenText {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px;
+    background-color: rgba(59, 59, 59, 0.237);
+    font-size: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    
+}
+
+.link{
+  text-decoration: none;
+  color: inherit;
+}
+
+.deleteButton{
+  position: absolute;
+  top: 13px;
+  right: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.deleteButton:hover {
+  transform: scale(1.1);
+}
+
+.favbutton {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  margin: 0;
+  padding: 5px ;
+  font-size: 24px;
+  color: red;
+  background-color: white;
+  border-radius: 10px;
+  border: none;
+}
+
