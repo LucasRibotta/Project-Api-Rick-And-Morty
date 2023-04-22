@@ -1,18 +1,36 @@
-import {ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER} from "./actions-types"
+import {ADD_FAV, REMOVE_FAV, FILTER, ORDER} from "./actions-types"
+import axios from "axios";
+const endpoint = 'http://localhost:3001/rickandmorty/fav/'
 
-export function addFavorites(character) {
-    return{
-        type: ADD_FAVORITE,  //define la accion que le paso
-        payload: character //define el contenido de dicha accion
-    }
-}
+export const addFav = (character) => {
+   return async (dispatch) => {
+      try {
+         const {data} = await axios.post(endpoint, character)
+         return dispatch ({
+            type: ADD_FAV,
+            payload: data,
+         })
+      } catch (error) {
+         console.log(error)
+      }
+   }
+ };
 
-export function deleteFavorites(id) {
-    return{
-        type:DELETE_FAVORITE,
-        payload: id
-    }
-}
+ export const removeFav = (id) => {
+   return async(dispatch) => {
+      try {
+         
+         const {data} = await axios.delete(`${endpoint}/${id}`)
+         return dispatch ({
+            type: REMOVE_FAV,
+            payload: data,
+         })
+      
+      } catch (error) { 
+         console.log(error) 
+      }
+   }
+ };
 
 export const filterCards = (status) => ({
     type: FILTER,

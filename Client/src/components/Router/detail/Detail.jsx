@@ -10,7 +10,7 @@ const[character, setCharacter] = useState({})
 const navigate = useNavigate()
 
 useEffect(() => {
-  fetch(`http://localhost:3001/rickandmorty/character/${detailId}`)
+  fetch('/Server/src/controllers/getCharByDetail.js')
     .then((response) => response.json())
     .then((char) => {
       if (char.name) {
@@ -33,11 +33,11 @@ useEffect(() => {
     
      <div className={s.containerdata}>
      <h1>Name: <span className={s.value}>{character.name}</span></h1>
-  <h1>Status: <span className={s.value}>{character.status}</span></h1>
-  <h1>Species: <span className={s.value}>{character.species}</span></h1>
-  <h1>Gender: <span className={s.value}>{character.gender}</span></h1>
-  <h1>Origin: <span className={s.value}>{character.origin?.name}</span></h1>
-  <h1>Location: <span className={s.value}>{character.location?.name}</span></h1>
+     <h1>Status: <span className={s.value}>{character.status}</span></h1>
+     <h1>Species: <span className={s.value}>{character.species}</span></h1>
+     <h1>Gender: <span className={s.value}>{character.gender}</span></h1>
+     <h1>Origin: <span className={s.value}>{character.origin?.name}</span></h1>
+     <h1>Location: <span className={s.value}>{character.location?.name}</span></h1>
      </div>
     <img className={s.image} src={character.image} alt="imagen" /> 
       

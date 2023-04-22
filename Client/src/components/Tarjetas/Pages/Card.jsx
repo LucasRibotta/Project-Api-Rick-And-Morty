@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import style from './Card.module.css';
 import { Link } from 'react-router-dom';
-import {addFavorites, deleteFavorites} from "../../../../src/redux/actions";
+import {addFav, removeFav} from "../../../../src/redux/actions";
 import { connect } from 'react-redux';
 
 
 
 
-function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) {
+function Card({character, onClose, removeFav, addFav, myFavorites}) {
    const {id, name, image} = character;
 
    const[isFav, setIsFav] = useState(false);
@@ -15,22 +15,26 @@ function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) 
    
 
    const handleFavorite = () =>{
+      console.log(isFav)
       if(isFav){
          setIsFav(false)
-         deleteFavorites(id)
+         removeFav(id)
       }else{
          setIsFav(true)
-         addFavorites(character)
+         addFav(character)
       }
    }
 
-   useEffect(() => {
+ useEffect(() => {
       myFavorites.forEach((fav) => {
          if (fav.id === id) {
             setIsFav(true);
          }
       });
-   }, [id, myFavorites]);
+   }, [id, myFavorites]);  
+
+   
+  
 
        return (
        
@@ -69,12 +73,12 @@ function Card({character, onClose, deleteFavorites, addFavorites, myFavorites}) 
 
    const mapDispatchToProps = (dispatch) => {
       return{
-         addFavorites: (character) =>{
-            dispatch(addFavorites(character))
+         addFav: (character) =>{
+            dispatch(addFav(character))
 
          },
-         deleteFavorites:function(id){
-            dispatch(deleteFavorites(id))
+         removeFav:function(id){
+            dispatch(removeFav(id))
          }
       }
    }

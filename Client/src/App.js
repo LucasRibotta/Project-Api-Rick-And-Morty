@@ -10,8 +10,7 @@ import Favorite from "./components/Router/favorite/Favorite";
 import History  from "./components/Router/history/History.jsx";
 import Errors from "./components/Router/Errors/Errors.jsx";
 import Home from './components/Router/Home/Home';
-
-
+import axios from 'axios';
 
 
 function App () {
@@ -21,27 +20,18 @@ function App () {
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
   
-  const userName = "lucas@henry.com";
-  const password = "lucas123" ;
+ 
 
-  function onSearch(id) {
-   // console.log("ID:", id);
-    fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-       .then((response) => response.json())
-       .then((data) => {
-          if (data.name) {
-            const characterExist = characters.find((char) => char.id === data.id);
-            if (characterExist){
-              window.alert('Este personaje ya ha sido agregado.');
-            }
-            else{
-             setCharacters((oldChars) => [...oldChars, data]);
-            }
-          } else {
-             window.alert('No hay personajes con ese ID');
-          }
-       });
- }
+  const onSearch = async (id) => {
+    try {
+      const {data} = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`)
+      const char = characters.find((char) => char.id === id)
+      if(char) return alert('Este personaje ya ha sido agregado.')
+      setCharacters([...characters, data])
+    } catch (error) {
+      alert(error.message)
+    }
+  }
  
     const handleClose = (id) => {
       const filtered = characters.filter((char) => char.id !== Number(id));
@@ -49,16 +39,20 @@ function App () {
       
     }
 
-    const login  = (userData) => {
-      if(userData.userName === userName && userData.password === password ) {
-        setAccess(true) 
-        navigate("/home")
+    const login = async (userData)=> {
+      try {
+        const { userName, password } = userData;
+        const URL = 'http://localhost:3001/rickandmorty/login/';
+        axios(URL + `?email=${userName}&password=${password}`).then(({ data }) => {
+           const { access } = data;
+           setAccess(data);
+           access && navigate('/home');
+        });
+        
+      } catch (error) {
+        alert(error.message)
       }
-        else{
-          alert("El usuario o la contraseña no son correctos.")
-      
-        }
-    }
+   }
     
     function logout() {
       setAccess(false);
