@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './App.css';
 import Nav from './components/Nav/Nav';
-/* import Cards from './components/Tarjetas/Cards.jsx'; */
 import {Routes, Route, useLocation, useNavigate} from "react-router-dom";
 import Forms from './components/Formulario/Forms';
 import About from './components/Router/about/About';
 import Detail from './components/Router/detail/Detail';
 import Favorite from "./components/Router/favorite/Favorite";
 import History  from "./components/Router/history/History.jsx";
-import Errors from "./components/Router/Errors/Errors.jsx";
-import Home from './components/Router/Home/Home';
+import Errors from "./components/Router/errors/Errors.jsx";
+import Home from './components/Router/home/Home';
+import Character from './components/Router/character/Character'
 import axios from 'axios';
 
 
@@ -33,11 +33,10 @@ function App () {
     }
   }
  
-    const handleClose = (id) => {
-      const filtered = characters.filter((char) => char.id !== Number(id));
-      setCharacters(filtered)
-      
-    }
+  const onClose = (id) => {
+    const filtered = characters.filter((char) => char.id !== Number(id));
+    setCharacters(filtered);
+  };
 
     const login = async (userData)=> {
       try {
@@ -80,12 +79,14 @@ function App () {
 
     <Route path="/logout" element={<Forms login={login} />} />
     <Route path="/" element={<Forms login = {login}/>}/>
-      <Route  path="/home" 
-            element={<Home 
+    <Route path="/home" element={<Home />}/>
+      <Route  path="/character" 
+            element={<Character 
               characters={characters} 
-              onClose = {handleClose}
+              onClose = {onClose}
               
               />}/>
+
               
       <Route  path="/about" element = {<About/>}/>
       <Route  path="/history" element = {<History/>}/>
@@ -99,4 +100,5 @@ function App () {
   )
 }
 
-export default App
+export default App 
+

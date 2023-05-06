@@ -1,46 +1,47 @@
-import {ADD_FAV, REMOVE_FAV, FILTER, ORDER} from "./actions-types"
+import { ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER } from "./actions-types";
 
 const initialState = {
-    myFavorites : [],
-    allCharacters: []
-}
+  myFavorites: [],
+  allCharacters: [],
+};
 
-export default function reducer(state = initialState, {type, payload}){
-    switch (type) {
+const reducer = (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ADD_FAVORITE:
+      return {
+        ...state, myFavorites: payload, allCharacters: payload
+      };
+    case DELETE_FAVORITE:
+      return {
+        ...state, myFavorites: payload
+      }
+    case FILTER:
+      const filterByGender = [...state.allCharacters].filter(
+        (char) => char.gender.toLowerCase() === payload.toLowerCase()
+      );
+      return {
+        ...state,
+        myFavorites: filterByGender,
+      };
+    case ORDER:
+      const filterByOrder = [...state.allCharacters].sort((a, b) => {
+        if (a.id > b.id) {
+          return payload === "Ascendente" ? 1 : -1;
+        } else if (a.id < b.id) {
+          return payload === "Descendente" ? 1 : -1;
+        } else {
+          return 0;
+        }
+        
+      });
+      return {
+        ...state,
+        myFavorites: filterByOrder,
+      };
 
-        case ADD_FAV:
-      return { ...state, myFavorites: payload, allCharacters: payload };
+    default:
+      return { ...state };
+  }
+};
 
-      case REMOVE_FAV:
-        return { ...state, myFavorites: payload };
-
-        case FILTER:
-            if(!payload){
-                return{
-                    ...state,
-                    myFavorites: [...state.allCharacters],
-                };
-            }
-            const filteredChars = state.allCharacters.filter((char) => char.gender === payload);
-            return{
-                ...state,
-                myFavorites: filteredChars
-            }
-
-            case ORDER:
-                const sortedChars = [...state.myFavorites].sort((charA, charB) => {
-                    if(payload === "ascendente"){
-                        return charA.id - charB.id
-                    }else if(payload === "descendente"){
-                        return charB.id - charA.id
-                    }
-                    else{return 0;}
-                })
-                return{
-                    ...state,
-                    myFavorites: sortedChars,
-                }
-            default:
-                return{...state}
-    }
-}
+export default reducer;

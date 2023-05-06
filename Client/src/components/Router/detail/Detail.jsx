@@ -10,7 +10,7 @@ const[character, setCharacter] = useState({})
 const navigate = useNavigate()
 
 useEffect(() => {
-  fetch('/Server/src/controllers/getCharByDetail.js')
+  fetch(`http://localhost:3001/rickandmorty/character/${detailId}`)
     .then((response) => response.json())
     .then((char) => {
       if (char.name) {

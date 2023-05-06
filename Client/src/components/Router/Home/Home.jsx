@@ -1,17 +1,29 @@
 import React from 'react';
-import style from "./Home.module.css";
-import Cards from '../../Tarjetas/Cards';
+import styled from 'styled-components'
+import s from './Home.modules.css'
 
-function Home({ characters, onClose }) {
+
+const Container = styled.div`
+background-color:grey;
+height: 100%;
+width: 100%;
+`;
+
+
+
+
+function Home(){
     return (
-        
-        <div className={style.contenedorimagen}>
-         { <img className={style.image} src="https://i.pinimg.com/originals/1a/ae/0d/1aae0de5b030ac09a55ba64504da29cf.gif" alt="portal" />}
-         
-        <Cards characters={characters} onClose={onClose} />
-        </div>
-       
-        );
-  }
-  
-  export default Home;
+        <Container>
+            <div className={s.contenedor}>
+            <h1>BIENVENIDOS A LA APP DE RICK AND MORTY</h1>
+            </div>
+            <img src="https://i.pinimg.com/originals/a4/f7/79/a4f779d4d3b7f30a6b597e324667942f.gif" alt="rickymorty" />
+            <button></button>
+        </Container>
+    )
+}
+
+export default Home;
+
+

@@ -1,40 +1,39 @@
-import {ADD_FAV, REMOVE_FAV, FILTER, ORDER} from "./actions-types"
 import axios from "axios";
-const endpoint = 'http://localhost:3001/rickandmorty/fav/'
+import { ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER } from "./actions-types";
 
-export const addFav = (character) => {
+const endpoint = "http://localhost:3001/rickandmorty/fav";
+
+export const addFavorite = (character) => {
    return async (dispatch) => {
-      try {
-         const {data} = await axios.post(endpoint, character)
-         return dispatch ({
-            type: ADD_FAV,
-            payload: data,
-         })
-      } catch (error) {
-         console.log(error)
-      }
-   }
+     try {
+       const { data } = await axios.post(endpoint, character);
+       return dispatch({
+         type: ADD_FAVORITE,
+         payload: data,
+       });
+     } catch (error) {
+       console.log(error);
+     }
+   };
  };
 
- export const removeFav = (id) => {
-   return async(dispatch) => {
-      try {
-         
-         const {data} = await axios.delete(`${endpoint}/${id}`)
-         return dispatch ({
-            type: REMOVE_FAV,
-            payload: data,
-         })
-      
-      } catch (error) { 
-         console.log(error) 
-      }
-   }
+ export const deleteFavorite = (id) => {
+   return async (dispatch) => {
+     try {
+       const { data } = await axios.delete(`${endpoint}/${id}`);
+       return dispatch({
+         type: DELETE_FAVORITE,
+         payload: data,
+       });
+     } catch (error) {
+       console.log(error);
+     }
+   };
  };
 
-export const filterCards = (status) => ({
+export const filterCards = (gender) => ({
     type: FILTER,
-    payload: status,
+    payload: gender,
   });
 
   

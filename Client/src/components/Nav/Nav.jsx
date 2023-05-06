@@ -1,7 +1,7 @@
 import React from 'react'
-import SearchBar from './Search/SearchBar'
+import SearchBar from '../Search/SearchBar'
 import style from './Nav.module.css'
-import {NavLink} from "react-router-dom"
+import {NavLink, useLocation} from "react-router-dom"
 
 const NavLi = ({to, children, ...props}) => {
   return(
@@ -19,7 +19,10 @@ const NavLi = ({to, children, ...props}) => {
 
 export default function Nav(props) {
   const {onSearch} = props
-  
+  const location = useLocation()
+
+  const isCharacterPage = location.pathname === '/character'
+
     return (
       <div className = {style.navContainer}>
         <h1 className={style.h1}>Rick and Morty</h1>
@@ -28,6 +31,10 @@ export default function Nav(props) {
 
           <li className={style.lista} >
             <NavLi to="/home">Home</NavLi>
+          </li>
+
+          <li className={style.lista} >
+            <NavLi to="/character">Character</NavLi>
           </li>
 
           <li className={style.lista} >
@@ -50,7 +57,7 @@ export default function Nav(props) {
           </div>
 
         </div>
-          <SearchBar className={style.boton} onSearch ={onSearch}/>
+          {isCharacterPage && <SearchBar  onSearch={onSearch} />}
       </div>
     )
   }
